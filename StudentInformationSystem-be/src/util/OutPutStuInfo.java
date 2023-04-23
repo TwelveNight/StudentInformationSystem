@@ -5,13 +5,13 @@ import model.Undergraduate;
 
 import java.util.Objects;
 
-public class Table {
+public class OutPutStuInfo {
     private static final int ID_WIDTH = 20;
     private static final int NAME_WIDTH = 15;
     private static final int AGE_WIDTH = 10;
     private static final int GRADE_WIDTH = 10;
     private static final int CLASS_WIDTH = 10;
-    private static final int MAJOR_WIDTH = 10;
+    private static final int MAJOR_WIDTH = 20;
     private static final int ADDRESS_WIDTH = 50;
     private static final int SCORE_WIDTH = 20;
 
@@ -72,7 +72,7 @@ public class Table {
                 centerText(Objects.toString(undergraduate.getClassNum(), ""), CLASS_WIDTH),
                 centerText(Objects.toString(undergraduate.getMajor(), ""), MAJOR_WIDTH),
                 centerText(Objects.toString(undergraduate.getAddress(), ""), ADDRESS_WIDTH),
-                centerText(Objects.toString(undergraduate.printScores(), ""), SCORE_WIDTH));
+                centerText(Objects.toString(undergraduate.getScores(), ""), SCORE_WIDTH));
     }
 
     public static String getHeaderByGraduate() {
@@ -96,23 +96,8 @@ public class Table {
                 centerText(Objects.toString(graduate.getAdvisor(), ""), ADVISOR_WIDTH),//导师
                 centerText(Objects.toString(graduate.getResearchArea(), ""), researchArea_WIDTH),//研究方向
                 centerText(Objects.toString(graduate.getAddress(), ""), ADDRESS_WIDTH),//地址
-                centerText(Objects.toString(graduate.printScores(), ""), SCORE_WIDTH));//成绩
+                centerText(Objects.toString(graduate.getScores(), ""), SCORE_WIDTH));//成绩
     }
-
-//    public static void main(String[] args) {
-//        Score[] score = new Score[3];
-//        score[0] = new Score("ch", 100);
-//        score[1] = new Score("ma", 100);
-//        score[2] = new Score("en", 100);
-//        Address address = new Address("California", "Los_Angeles", "Wilshire_Boulevard", "100");
-//        Undergraduate undergraduate = new Undergraduate("2323156498", "z", "20", address, score, "2212", "1", "II", 44.0, 55, 66);
-//        System.out.print(Table.getHeaderByUnGraduate());
-//        System.out.print(Table.getRowByUnGraduate(undergraduate));
-//
-//        Graduate graduate = new Graduate("2323156498", "z", "20", address, score, "2212", "Lily", "computer_science", 44.0, 55, 66);
-//        System.out.print(Table.getHeaderByGraduate());
-//        System.out.print(Table.getRowByGraduate(graduate));
-//    }
 }
 
 

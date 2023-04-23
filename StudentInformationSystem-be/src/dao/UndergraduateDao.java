@@ -6,26 +6,24 @@ import model.Undergraduate;
 import java.util.ArrayList;
 import java.util.Comparator;
 
-public class UndergraduateDao {
+public class UndergraduateDao extends StudentDao {
     protected static ArrayList<Undergraduate> studentList = new ArrayList<>(); // 学生列表
 
     /**
      * 新增学生
      *
      * @param student 学生对象
-     * @return 新增成功返回 true，否则返回 false
      */
-    public boolean add(Undergraduate student) {
+    public void add(Undergraduate student) {
         // 判断学号是否已存在
         for (Undergraduate s : studentList) {
             if (s.getId() == student.getId()) {
                 System.out.println("学号已存在");
-                return false;
+                return;
             }
         }
         studentList.add(student);
         System.out.println("添加成功");
-        return true;
     }
 
     /**
@@ -33,7 +31,8 @@ public class UndergraduateDao {
      *
      * @param StuId 学号
      */
-    public void delete(int StuId) {
+    @Override
+    public void delete(long StuId) {
         for (Undergraduate s : studentList) {
             if (s.getId() == StuId) {
                 studentList.remove(s);
@@ -49,7 +48,7 @@ public class UndergraduateDao {
      *
      * @param stuId 学号
      */
-    public Undergraduate queryById(int stuId) {
+    public Undergraduate queryById(long stuId) {
         for (Undergraduate s : studentList) {
             if (s.getId() == stuId) {
                 return s;
@@ -98,7 +97,7 @@ public class UndergraduateDao {
      *
      * @param stuId 学号
      */
-    public void modify(int stuId, Undergraduate student) {
+    public void modify(long stuId, Undergraduate student) {
         for (int i = 0; i < studentList.size(); i++) {
             if (studentList.get(i).getId() == stuId) {
                 studentList.set(i, student);
@@ -127,7 +126,6 @@ public class UndergraduateDao {
     }
 
 
-
     /**
      * 按姓名排序
      */
@@ -142,7 +140,7 @@ public class UndergraduateDao {
      *
      * @param subjectName 科目名称
      */
-    public static void sortBySubject(String subjectName) {
+    public void sortBySubject(String subjectName) {
         studentList.sort((s1, s2) -> {
             float s1Score = (float) s1.getScore(subjectName);
             float s2Score = (float) s2.getScore(subjectName);
@@ -155,7 +153,7 @@ public class UndergraduateDao {
     /**
      * 按总成绩排序
      */
-    public static void sortByTotalScore() {
+    public void sortByTotalScore() {
         studentList.sort((s1, s2) -> {
             float s1Score = s1.getTotalScore();
             float s2Score = s2.getTotalScore();
@@ -168,7 +166,7 @@ public class UndergraduateDao {
      *
      * @return 学生人数
      */
-    public static int getSize() {
+    public int getSize() {
         return studentList.size();
     }
 
