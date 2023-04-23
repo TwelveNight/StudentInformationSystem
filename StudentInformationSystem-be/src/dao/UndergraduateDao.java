@@ -1,22 +1,22 @@
 package dao;
 
 import model.Student;
-import model.Undergraduate;
+import model.UnderGraduate;
 
 import java.util.ArrayList;
 import java.util.Comparator;
 
 public class UndergraduateDao extends StudentDao {
-    protected static ArrayList<Undergraduate> studentList = new ArrayList<>(); // 学生列表
+    protected static ArrayList<UnderGraduate> studentList = new ArrayList<>(); // 学生列表
 
     /**
      * 新增学生
      *
      * @param student 学生对象
      */
-    public void add(Undergraduate student) {
+    public void add(UnderGraduate student) {
         // 判断学号是否已存在
-        for (Undergraduate s : studentList) {
+        for (UnderGraduate s : studentList) {
             if (s.getId() == student.getId()) {
                 System.out.println("学号已存在");
                 return;
@@ -33,7 +33,7 @@ public class UndergraduateDao extends StudentDao {
      */
     @Override
     public void delete(long StuId) {
-        for (Undergraduate s : studentList) {
+        for (UnderGraduate s : studentList) {
             if (s.getId() == StuId) {
                 studentList.remove(s);
                 System.out.println("删除成功");
@@ -48,8 +48,8 @@ public class UndergraduateDao extends StudentDao {
      *
      * @param stuId 学号
      */
-    public Undergraduate queryById(long stuId) {
-        for (Undergraduate s : studentList) {
+    public UnderGraduate queryById(long stuId) {
+        for (UnderGraduate s : studentList) {
             if (s.getId() == stuId) {
                 return s;
             }
@@ -63,8 +63,8 @@ public class UndergraduateDao extends StudentDao {
      *
      * @param name 姓名
      */
-    public Undergraduate queryByName(String name) {
-        for (Undergraduate s : studentList) {
+    public UnderGraduate queryByName(String name) {
+        for (UnderGraduate s : studentList) {
             if (s.getName().equals(name)) {
                 return s;
             }
@@ -78,9 +78,9 @@ public class UndergraduateDao extends StudentDao {
      *
      * @param classNum 班级号
      */
-    public ArrayList<Undergraduate> queryByClass(String classNum) {
-        ArrayList<Undergraduate> students = new ArrayList<>();
-        for (Undergraduate s : studentList) {
+    public ArrayList<UnderGraduate> queryByClass(String classNum) {
+        ArrayList<UnderGraduate> students = new ArrayList<>();
+        for (UnderGraduate s : studentList) {
             if (s.getClassNum().equals(classNum)) {
                 students.add(s);
             }
@@ -97,7 +97,7 @@ public class UndergraduateDao extends StudentDao {
      *
      * @param stuId 学号
      */
-    public void modify(long stuId, Undergraduate student) {
+    public void modify(long stuId, UnderGraduate student) {
         for (int i = 0; i < studentList.size(); i++) {
             if (studentList.get(i).getId() == stuId) {
                 studentList.set(i, student);
@@ -113,7 +113,7 @@ public class UndergraduateDao extends StudentDao {
      *
      * @return 学生列表
      */
-    public ArrayList<Undergraduate> queryAll() {
+    public ArrayList<UnderGraduate> queryAll() {
         return studentList;
     }
 

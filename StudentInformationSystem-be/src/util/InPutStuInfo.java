@@ -3,14 +3,14 @@ package util;
 import model.Address;
 import model.Graduate;
 import model.Score;
-import model.Undergraduate;
+import model.UnderGraduate;
 
 import java.util.List;
 import java.util.Scanner;
 
 public class InPutStuInfo {
     // 输入本科生信息
-    public static Undergraduate addUnderGraduate(int i) {
+    public static UnderGraduate addUnderGraduate(int i) {
         Scanner sc = new Scanner(System.in);
         if (i + 1 == 1) {
             System.out.println("请输入第" + (i + 1) + "个本科生的信息，按照以下顺序以一个空格分隔：学号 姓名 年龄 班级 年级 专业 省份 城市 街道 地址 语文成绩 数学成绩 英语成绩");
@@ -33,7 +33,7 @@ public class InPutStuInfo {
             double chinese = Double.parseDouble(input[10]);
             double math = Double.parseDouble(input[11]);
             double english = Double.parseDouble(input[12]);
-            return new Undergraduate(number, name, age, address, className, grade, major, chinese, math, english);
+            return new UnderGraduate(number, name, age, address, className, grade, major, chinese, math, english);
         } catch (NumberFormatException e) {
             System.out.println("输入格式不正确");
             return null;
@@ -74,7 +74,7 @@ public class InPutStuInfo {
 
 
     // 修改本科生信息
-    public static Undergraduate updateUnderGraduate(Undergraduate u) {
+    public static UnderGraduate updateUnderGraduate(UnderGraduate u) {
         String name, classNum, major;
         int age;
         Scanner sc = new Scanner(System.in);

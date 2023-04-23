@@ -3,7 +3,7 @@ package view;
 import dao.GraduateDao;
 import dao.UndergraduateDao;
 import model.Graduate;
-import model.Undergraduate;
+import model.UnderGraduate;
 import util.Cls;
 import util.InPutStuInfo;
 import util.OutPutStuInfo;
@@ -34,7 +34,7 @@ public class Operate {
             if (scanner.hasNextInt()) {
                 int num = scanner.nextInt();
                 for (int i = 0; i < num; i++) {
-                    Undergraduate u = InPutStuInfo.addUnderGraduate(i);
+                    UnderGraduate u = InPutStuInfo.addUnderGraduate(i);
                     if (u != null) {
                         undergraduateDao.add(u);
                     }
@@ -60,6 +60,9 @@ public class Operate {
         } else {
             System.out.println("输入有误，请重新输入");
         }
+        System.out.println("按任意键继续");
+        scanner.nextLine();
+        scanner.nextLine();
     }
 
     // 修改学生
@@ -86,7 +89,7 @@ public class Operate {
             if (undergraduateDao.queryById(id) != null) {
                 System.out.println(OutPutStuInfo.getHeaderByUnGraduate());
                 System.out.println(OutPutStuInfo.getRowByUnGraduate(undergraduateDao.queryById(id)));
-                Undergraduate new_u = InPutStuInfo.updateUnderGraduate(undergraduateDao.queryById(id));
+                UnderGraduate new_u = InPutStuInfo.updateUnderGraduate(undergraduateDao.queryById(id));
                 undergraduateDao.modify(id, new_u);
                 System.out.println(OutPutStuInfo.getHeaderByUnGraduate());
                 System.out.println(OutPutStuInfo.getRowByUnGraduate(undergraduateDao.queryById(id)));
@@ -114,6 +117,9 @@ public class Operate {
         } else {
             System.out.println("输入有误，请重新输入");
         }
+        System.out.println("按任意键继续");
+        scanner.nextLine();
+        scanner.nextLine();
     }
 
     // 删除学生
@@ -157,6 +163,9 @@ public class Operate {
         } else {
             System.out.println("输入有误，请重新输入");
         }
+        System.out.println("按任意键继续");
+        scanner.nextLine();
+        scanner.nextLine();
     }
 
     // 浏览学生
@@ -172,9 +181,9 @@ public class Operate {
             scanner.next();
         }
         if (type4 == 1) {
-            ArrayList<Undergraduate> us = undergraduateDao.queryAll();
+            ArrayList<UnderGraduate> us = undergraduateDao.queryAll();
             System.out.println(OutPutStuInfo.getHeaderByUnGraduate());
-            for (Undergraduate u : us) {
+            for (UnderGraduate u : us) {
                 System.out.println(OutPutStuInfo.getRowByUnGraduate(u));
             }
         } else if (type4 == 2) {
@@ -186,6 +195,9 @@ public class Operate {
         } else {
             System.out.println("输入有误，请重新输入");
         }
+        System.out.println("按任意键返回主菜单");
+        scanner.nextLine();
+        scanner.nextLine();
     }
 
     // 查询学生
@@ -215,6 +227,9 @@ public class Operate {
                 System.out.print("请输入学生姓名：");
                 name = scanner.nextLine();
                 if (graduateDao.queryByName(name) == null) {
+                    System.out.println("请按任意键返回主菜单");
+                    scanner.nextLine();
+                    scanner.nextLine();
                     return;
                 }
                 System.out.println(OutPutStuInfo.getHeaderByGraduate());
@@ -228,6 +243,9 @@ public class Operate {
                     scanner.next();
                 }
                 if (graduateDao.queryById(id) == null) {
+                    System.out.println("请按任意键返回主菜单");
+                    scanner.nextLine();
+                    scanner.nextLine();
                     return;
                 }
                 System.out.println(OutPutStuInfo.getHeaderByGraduate());
@@ -236,6 +254,9 @@ public class Operate {
                 System.out.print("请输入学生班级：");
                 className = scanner.nextLine();
                 if (graduateDao.queryByClass(className) == null) {
+                    System.out.println("请按任意键返回主菜单");
+                    scanner.nextLine();
+                    scanner.nextLine();
                     return;
                 }
                 System.out.println(OutPutStuInfo.getHeaderByGraduate());
@@ -260,6 +281,9 @@ public class Operate {
                 System.out.print("请输入学生姓名：");
                 name = scanner.nextLine();
                 if (undergraduateDao.queryByName(name) == null) {
+                    System.out.println("请按任意键返回主菜单");
+                    scanner.nextLine();
+                    scanner.nextLine();
                     return;
                 }
                 System.out.println(OutPutStuInfo.getHeaderByUnGraduate());
@@ -273,6 +297,9 @@ public class Operate {
                     scanner.next();
                 }
                 if (undergraduateDao.queryById(id) == null) {
+                    System.out.println("请按任意键返回主菜单");
+                    scanner.nextLine();
+                    scanner.nextLine();
                     return;
                 }
                 System.out.println(OutPutStuInfo.getHeaderByUnGraduate());
@@ -281,11 +308,14 @@ public class Operate {
                 System.out.print("请输入学生班级：");
                 className = scanner.nextLine();
                 if (undergraduateDao.queryByClass(className) == null) {
+                    System.out.println("请按任意键返回主菜单");
+                    scanner.nextLine();
+                    scanner.nextLine();
                     return;
                 }
                 System.out.println(OutPutStuInfo.getHeaderByUnGraduate());
-                ArrayList<Undergraduate> us = undergraduateDao.queryByClass(className);
-                for (Undergraduate u : us) {
+                ArrayList<UnderGraduate> us = undergraduateDao.queryByClass(className);
+                for (UnderGraduate u : us) {
                     System.out.println(OutPutStuInfo.getRowByUnGraduate(u));
                 }
             } else {
@@ -294,6 +324,9 @@ public class Operate {
         } else {
             System.out.println("输入有误，请重新输入");
         }
+        System.out.println("按任意键返回主菜单");
+        scanner.nextLine();
+        scanner.nextLine();
     }
 
     // 排序学生
@@ -361,5 +394,8 @@ public class Operate {
         } else {
             System.out.println("输入有误，请重新输入");
         }
+        System.out.println("按任意键返回主菜单");
+        scanner.nextLine();
+        scanner.nextLine();
     }
 }

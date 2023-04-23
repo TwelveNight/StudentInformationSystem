@@ -1,7 +1,7 @@
 package util;
 
 import model.Graduate;
-import model.Undergraduate;
+import model.UnderGraduate;
 
 import java.util.Objects;
 
@@ -63,7 +63,7 @@ public class OutPutStuInfo {
     }
 
     //表格
-    public static String getRowByUnGraduate(Undergraduate undergraduate) {
+    public static String getRowByUnGraduate(UnderGraduate undergraduate) {
         return String.format("|%s|%s|%s|%s|%s|%s|%s|%s|",
                 centerText(Objects.toString(undergraduate.getId(), ""), ID_WIDTH),
                 centerText(Objects.toString(undergraduate.getName(), ""), NAME_WIDTH),

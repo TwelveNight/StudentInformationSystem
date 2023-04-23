@@ -1,5 +1,6 @@
 package util;
 
+//清屏
 public class Cls {
     public static void cls() {
         // 检查操作系统类型

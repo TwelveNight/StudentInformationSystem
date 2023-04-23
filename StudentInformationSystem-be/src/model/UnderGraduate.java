@@ -1,12 +1,12 @@
 package model;
 
-public class Undergraduate extends Student {
+public class UnderGraduate extends Student {
 
     private String grade; // 年级
     private String major; // 专业
 
 
-    public Undergraduate(long id, String name, int age, Address address, String classNum, String grade, String major, double mathScore, double englishScore, double historyScore) {
+    public UnderGraduate(long id, String name, int age, Address address, String classNum, String grade, String major, double mathScore, double englishScore, double historyScore) {
         super(id, name, age, address, classNum);
         scores.add(new Score("Chinese", mathScore));
         scores.add(new Score("Math", englishScore));
