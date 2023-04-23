@@ -1,13 +1,11 @@
-package Test;
+package util;
 
 import model.Graduate;
 import model.Undergraduate;
-import util.Address;
-import util.Score;
 
 import java.util.Objects;
 
-public class TableHeader {
+public class Table {
     private static final int ID_WIDTH = 20;
     private static final int NAME_WIDTH = 15;
     private static final int AGE_WIDTH = 10;
@@ -32,7 +30,8 @@ public class TableHeader {
 
     private static final String RESEARCH_AREA_HEADER = "Research Area";//研究方向
     private static final String ADDRESS_HEADER = "Address";//地址
-    private static final String SCORE_HEADER = "Math English History";//成绩
+    private static final String GR_SCORE_HEADER = "Math English History";//成绩
+    private static final String UN_SCORE_HEADER = "Chinese Math English";//成绩
 
 
     //居中
@@ -52,7 +51,7 @@ public class TableHeader {
 
     //表头
     public static String getHeaderByUnGraduate() {
-        return String.format("|%s|%s|%s|%s|%s|%s|%s|%s|\n",
+        return String.format("|%s|%s|%s|%s|%s|%s|%s|%s|",
                 centerText(ID_HEADER, ID_WIDTH),//学号
                 centerText(NAME_HEADER, NAME_WIDTH),//姓名
                 centerText(AGE_HEADER, AGE_WIDTH),//年龄
@@ -60,12 +59,12 @@ public class TableHeader {
                 centerText(CLASS_HEADER, CLASS_WIDTH),//班级
                 centerText(MAJOR_HEADER, MAJOR_WIDTH),//专业
                 centerText(ADDRESS_HEADER, ADDRESS_WIDTH),//地址
-                centerText(SCORE_HEADER, SCORE_WIDTH));//成绩
+                centerText(UN_SCORE_HEADER, SCORE_WIDTH));//成绩
     }
 
     //表格
     public static String getRowByUnGraduate(Undergraduate undergraduate) {
-        return String.format("|%s|%s|%s|%s|%s|%s|%s|%s|\n",
+        return String.format("|%s|%s|%s|%s|%s|%s|%s|%s|",
                 centerText(Objects.toString(undergraduate.getId(), ""), ID_WIDTH),
                 centerText(Objects.toString(undergraduate.getName(), ""), NAME_WIDTH),
                 centerText(Objects.toString(undergraduate.getAge(), ""), AGE_WIDTH),
@@ -77,7 +76,7 @@ public class TableHeader {
     }
 
     public static String getHeaderByGraduate() {
-        return String.format("|%s|%s|%s|%s|%s|%s|%s|%s|\n",
+        return String.format("|%s|%s|%s|%s|%s|%s|%s|%s|",
                 centerText(ID_HEADER, ID_WIDTH),//学号
                 centerText(NAME_HEADER, NAME_WIDTH),//姓名
                 centerText(AGE_HEADER, AGE_WIDTH),//年龄
@@ -85,11 +84,11 @@ public class TableHeader {
                 centerText(ADVISOR_HEADER, ADVISOR_WIDTH),//导师
                 centerText(RESEARCH_AREA_HEADER, researchArea_WIDTH),//研究方向
                 centerText(ADDRESS_HEADER, ADDRESS_WIDTH),//地址
-                centerText(SCORE_HEADER, SCORE_WIDTH));//成绩
+                centerText(GR_SCORE_HEADER, SCORE_WIDTH));//成绩
     }
 
     public static String getRowByGraduate(Graduate graduate) {
-        return String.format("|%s|%s|%s|%s|%s|%s|%s|%s|\n",
+        return String.format("|%s|%s|%s|%s|%s|%s|%s|%s|",
                 centerText(Objects.toString(graduate.getId(), ""), ID_WIDTH),//学号
                 centerText(Objects.toString(graduate.getName(), ""), NAME_WIDTH),//姓名
                 centerText(Objects.toString(graduate.getAge(), ""), AGE_WIDTH),//年龄
@@ -100,20 +99,20 @@ public class TableHeader {
                 centerText(Objects.toString(graduate.printScores(), ""), SCORE_WIDTH));//成绩
     }
 
-    public static void main(String[] args) {
-        Score[] score = new Score[3];
-        score[0] = new Score("ch", 100);
-        score[1] = new Score("ma", 100);
-        score[2] = new Score("en", 100);
-        Address address = new Address("California", "Los_Angeles", "Wilshire_Boulevard", "100");
-        Undergraduate undergraduate = new Undergraduate("2323156498", "z", "20", address, score, "2212", "1", "II", 44.0, 55, 66);
-        System.out.print(TableHeader.getHeaderByUnGraduate());
-        System.out.print(TableHeader.getRowByUnGraduate(undergraduate));
-
-        Graduate graduate = new Graduate("2323156498", "z", "20", address, score, "2212", "Lily", "computer_science", 44.0, 55, 66);
-        System.out.print(TableHeader.getHeaderByGraduate());
-        System.out.print(TableHeader.getRowByGraduate(graduate));
-    }
+//    public static void main(String[] args) {
+//        Score[] score = new Score[3];
+//        score[0] = new Score("ch", 100);
+//        score[1] = new Score("ma", 100);
+//        score[2] = new Score("en", 100);
+//        Address address = new Address("California", "Los_Angeles", "Wilshire_Boulevard", "100");
+//        Undergraduate undergraduate = new Undergraduate("2323156498", "z", "20", address, score, "2212", "1", "II", 44.0, 55, 66);
+//        System.out.print(Table.getHeaderByUnGraduate());
+//        System.out.print(Table.getRowByUnGraduate(undergraduate));
+//
+//        Graduate graduate = new Graduate("2323156498", "z", "20", address, score, "2212", "Lily", "computer_science", 44.0, 55, 66);
+//        System.out.print(Table.getHeaderByGraduate());
+//        System.out.print(Table.getRowByGraduate(graduate));
+//    }
 }
 
 

@@ -1,4 +1,4 @@
-package util;
+package model;
 
 /**
  * 地址类，包括省份、城市、街道、门牌号四个属性

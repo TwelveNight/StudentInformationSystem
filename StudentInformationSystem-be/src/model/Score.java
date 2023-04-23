@@ -1,4 +1,4 @@
-package util;
+package model;
 
 /**
  * 成绩类，包括课程名和成绩两个属性
