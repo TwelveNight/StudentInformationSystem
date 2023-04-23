@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="StudentInformationSystem-be:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/StudentInformationSystem_be_jar</output-path>
+    <root id="archive" name="StudentInformationSystem-be.jar">
+      <element id="module-output" name="StudentInformationSystem-be" />
+    </root>
+  </artifact>
+</component>

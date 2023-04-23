@@ -8,70 +8,70 @@ import model.Undergraduate;
 import java.util.List;
 import java.util.Scanner;
 
-public class InPut {
+public class InPutStuInfo {
     // 输入本科生信息
-    public static Undergraduate addUnderGraduate() {
+    public static Undergraduate addUnderGraduate(int i) {
         Scanner sc = new Scanner(System.in);
-        System.out.println("请输入本科生的信息:");
-        System.out.print("学号: ");
-        int number = sc.nextInt();
-        sc.nextLine();// 吃掉回车
-        System.out.print("姓名: ");
-        String name = sc.nextLine();
-        System.out.print("年龄: ");
-        int age = sc.nextInt();
-        sc.nextLine();// 吃掉回车
-        System.out.print("班级: ");
-        String className = sc.nextLine();
-        System.out.print("年级:");
-        String grade = sc.nextLine();
-        System.out.print("专业:");
-        String major = sc.nextLine();
-        System.out.print("地址 (省份 城市 街道 地址): ");
-        String[] addressArr = sc.nextLine().split(" ");
-        if (addressArr.length != 4) {
-            System.out.println("输入地址格式错误");
+        if (i + 1 == 1) {
+            System.out.println("请输入第" + (i + 1) + "个本科生的信息，按照以下顺序以一个空格分隔：学号 姓名 年龄 班级 年级 专业 省份 城市 街道 地址 语文成绩 数学成绩 英语成绩");
+        } else {
+            System.out.println("请输入第" + (i + 1) + "个本科生的信息");
+        }
+        String[] input = sc.nextLine().split(" ");
+        if (input.length != 13) {
+            System.out.println("信息不完整或格式不正确");
             return null;
         }
-        Address address = new Address(addressArr[0], addressArr[1], addressArr[2], addressArr[3]);
-        System.out.print("成绩 (语文 数学 英语): ");
-        double chinese = sc.nextDouble();
-        double math = sc.nextDouble();
-        double english = sc.nextDouble();
-        return new Undergraduate(number, name, age, address, className, grade, major, chinese, math, english);
+        try {
+            long number = Long.parseLong(input[0]);
+            String name = input[1];
+            int age = Integer.parseInt(input[2]);
+            String grade = input[3];
+            String className = input[4];
+            String major = input[5];
+            Address address = new Address(input[6], input[7], input[8], input[9]);
+            double chinese = Double.parseDouble(input[10]);
+            double math = Double.parseDouble(input[11]);
+            double english = Double.parseDouble(input[12]);
+            return new Undergraduate(number, name, age, address, className, grade, major, chinese, math, english);
+        } catch (NumberFormatException e) {
+            System.out.println("输入格式不正确");
+            return null;
+        }
     }
 
+
     // 输入研究生信息
-    public static Graduate addGraduate() {
+    public static Graduate addGraduate(int i) {
         Scanner sc = new Scanner(System.in);
-        System.out.println("请输入研究生的信息:");
-        System.out.print("学号: ");
-        int number = sc.nextInt();
-        sc.nextLine();// 吃掉回车
-        System.out.print("姓名: ");
-        String name = sc.nextLine();
-        System.out.print("年龄: ");
-        int age = sc.nextInt();
-        sc.nextLine();// 吃掉回车
-        System.out.print("班级: ");
-        String className = sc.nextLine();
-        System.out.print("地址 (省份 城市 街道 地址): ");
-        String[] addressArr = sc.nextLine().split(" ");
-        if (addressArr.length != 4) {
-            System.out.println("输入地址格式错误");
+        if (i + 1 == 1) {
+            System.out.println("请输入第" + (i + 1) + "个研究生的信息，按照以下顺序以一个空格分隔：学号 姓名 年龄 班级 导师 研究方向 省份 城市 街道 地址 语文成绩 数学成绩 英语成绩 历史成绩");
+        } else {
+            System.out.println("请输入第" + (i + 1) + "个研究生的信息");
+        }
+        String[] inputArr = sc.nextLine().split(" ");
+        if (inputArr.length != 13) {
+            System.out.println("信息不完整或格式不正确");
             return null;
         }
-        Address address = new Address(addressArr[0], addressArr[1], addressArr[2], addressArr[3]);
-        System.out.print("导师: ");
-        String tutor = sc.nextLine();
-        System.out.print("研究方向: ");
-        String researchDirection = sc.nextLine();
-        System.out.print("成绩 (数学 英语 历史): ");
-        double math = sc.nextDouble();
-        double english = sc.nextDouble();
-        double history = sc.nextDouble();
-        return new Graduate(number, name, age, address, className, tutor, researchDirection, math, english, history);
+        try {
+            int number = Integer.parseInt(inputArr[0]);
+            String name = inputArr[1];
+            int age = Integer.parseInt(inputArr[2]);
+            String className = inputArr[3];
+            Address address = new Address(inputArr[4], inputArr[5], inputArr[6], inputArr[7]);
+            String tutor = inputArr[8];
+            String researchDirection = inputArr[9];
+            double math = Double.parseDouble(inputArr[10]);
+            double english = Double.parseDouble(inputArr[11]);
+            double history = Double.parseDouble(inputArr[12]);
+            return new Graduate(number, name, age, address, className, tutor, researchDirection, math, english, history);
+        } catch (NumberFormatException e) {
+            System.out.println("输入格式错误");
+            return null;
+        }
     }
+
 
     // 修改本科生信息
     public static Undergraduate updateUnderGraduate(Undergraduate u) {
@@ -82,8 +82,13 @@ public class InPut {
         while (choice != 0) {
             System.out.println("请选择您要修改的学生信息：");
             //姓名、年龄、班级、专业、地址、各科成绩
-            System.out.println("1.姓名 2.年龄 3.班级 4.专业 5.地址 6.各科成绩 0.退出");
-            choice = sc.nextInt();
+            System.out.println("1.姓名 2.年龄 3.班级 4.专业 5.地址 6.年级 7.各科成绩 0.退出");
+            if (sc.hasNextInt()) {
+                choice = sc.nextInt();
+            } else {
+                System.out.println("输入格式错误");
+                return null;
+            }
             switch (choice) {
                 case 1:
                     System.out.println("请输入新的姓名：");
@@ -116,6 +121,11 @@ public class InPut {
                     u.setAddress(address);
                     break;
                 case 6:
+                    System.out.println("请输入新的年级：");
+                    String grade = sc.next();
+                    u.setGrade(grade);
+                    break;
+                case 7:
                     System.out.println("请输入新的各科成绩：");
                     Score[] scores = new Score[3];
                     scores[0] = new Score("Chinese", sc.nextDouble());
@@ -143,7 +153,14 @@ public class InPut {
             System.out.println("请选择您要修改的学生信息：");
             //姓名、年龄、班级、导师、研究方向、地址、各科成绩
             System.out.println("1.姓名 2.年龄 3.班级 4.导师 5.研究方向 6.地址 7.各科成绩 0.退出");
-            choice = sc.nextInt();
+            //判断输入是否为数字
+            if (sc.hasNextInt()) {
+                choice = sc.nextInt();
+            } else {
+                System.out.println("输入错误，请重新输入！");
+                sc.next();
+                continue;
+            }
             switch (choice) {
                 case 1:
                     System.out.println("请输入新的姓名：");

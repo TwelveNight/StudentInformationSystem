@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 
 
-public class GraduateDao {
+public class GraduateDao extends StudentDao {
 
     protected static ArrayList<Graduate> studentList = new ArrayList<>(); // 学生列表
 
@@ -36,7 +36,7 @@ public class GraduateDao {
      *
      * @param StuId 学号
      */
-    public void delete(int StuId) {
+    public void delete(long StuId) {
         for (Graduate s : studentList) {
             if (s.getId() == StuId) {
                 studentList.remove(s);
@@ -52,7 +52,7 @@ public class GraduateDao {
      *
      * @param stuId 学号
      */
-    public Graduate queryById(int stuId) {
+    public Graduate queryById(long stuId) {
         for (Graduate s : studentList) {
             if (s.getId() == stuId) {
                 return s;
@@ -67,7 +67,7 @@ public class GraduateDao {
      *
      * @param student 学生对象
      */
-    public void modify(int stuId, Graduate student) {
+    public void modify(long stuId, Graduate student) {
         for (int i = 0; i < studentList.size(); i++) {
             if (studentList.get(i).getId() == stuId) {
                 studentList.set(i, student);
@@ -127,16 +127,25 @@ public class GraduateDao {
      * 按学号排序
      */
     public void sortByStudentNum() {
+        if (studentList.size() == 0) {
+            System.out.println("学生列表为空");
+            return;
+        }
         studentList.sort(Comparator.comparing(Student::getId));
+        System.out.println("排序成功");
     }
-
 
 
     /**
      * 按姓名排序
      */
     public void sortByName() {
+        if (studentList.size() == 0) {
+            System.out.println("学生列表为空");
+            return;
+        }
         studentList.sort(Comparator.comparing(Student::getName));
+        System.out.println("排序成功");
     }
 
 
@@ -145,7 +154,11 @@ public class GraduateDao {
      *
      * @param subjectName 科目名称
      */
-    public static void sortBySubject(String subjectName) {
+    public void sortBySubject(String subjectName) {
+        if (studentList.size() == 0) {
+            System.out.println("学生列表为空");
+            return;
+        }
         studentList.sort((s1, s2) -> {
             float s1Score = (float) s1.getScore(subjectName);
             float s2Score = (float) s2.getScore(subjectName);
@@ -157,7 +170,11 @@ public class GraduateDao {
     /**
      * 按总成绩排序
      */
-    public static void sortByTotalScore() {
+    public void sortByTotalScore() {
+        if (studentList.size() == 0) {
+            System.out.println("学生列表为空");
+            return;
+        }
         studentList.sort((s1, s2) -> {
             float s1Score = s1.getTotalScore();
             float s2Score = s2.getTotalScore();
@@ -171,7 +188,7 @@ public class GraduateDao {
      *
      * @return 学生人数
      */
-    public static int getSize() {
+    public int getSize() {
         return studentList.size();
     }
 
